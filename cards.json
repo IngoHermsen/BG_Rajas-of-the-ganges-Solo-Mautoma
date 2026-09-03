@@ -1,0 +1,314 @@
+[
+    {   
+        "action": {
+            "properties": {
+                "actionType": "harbor",
+                "fameReward": {
+                    "easy": 4,
+                    "normal": 4,
+                    "difficult": 4
+                },
+                "coinReward": {
+                    "easy": 7,
+                    "normal": 7,
+                    "difficult": 7
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 11,
+                "chambers": "Portuguese",
+                "marketPlace": "silk",
+                "harbor": 2,
+                "outerPalace": "balcony_twoBlue_oneGreen"
+            }
+        }
+    },
+    {
+        "action": {
+            "properties": {
+                "actionType": "provinceTileRemoval",
+                "fameReward": {
+                    "easy": 3,
+                    "normal": 4,
+                    "difficult": 5
+                },
+                "coinReward": {
+                    "easy": 7,
+                    "normal": 7,
+                    "difficult": 8
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 1,
+                "chambers": "Portuguese",
+                "marketPlace": "silk",
+                "harbor": 2,
+                "outerPalace": "balcony_twoPurple_oneOrange"
+            }
+        }
+    },
+    {
+        "action": {
+            "properties": {
+                "actionType": "provinceTileRemoval",
+                "fameReward": {
+                    "easy": 5,
+                    "normal": 4,
+                    "difficult": 5
+                },
+                "coinReward": {
+                    "easy": 8,
+                    "normal": 7,
+                    "difficult": 8
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 6,
+                "chambers": "RajaManSingh",
+                "marketPlace": "tea",
+                "harbor": 3,
+                "outerPalace": "balcony_twoPurple_oneOrange"
+            }
+        }
+    },
+     {
+        "action": {
+            "properties": {
+                "actionType": "chambers",
+                "fameReward": {
+                    "easy": 5,
+                    "normal": 5,
+                    "difficult": 6
+                },
+                "coinReward": {
+                    "easy": 7,
+                    "normal": 7,
+                    "difficult": 7
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 12,
+                "chambers": "RajaManSingh",
+                "marketPlace": "threeDifferent",
+                "harbor": 2,
+                "outerPalace": "terrace_oneGreen"
+            }
+        }
+    },
+    {
+        "action": {
+            "properties": {
+                "actionType": "outerPalace",
+                "fameReward": {
+                    "easy": 5,
+                    "normal": 4,
+                    "difficult": 4
+                },
+                "coinReward": {
+                    "easy": 7,
+                    "normal": 8,
+                    "difficult": 8
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 7,
+                "chambers": "GreatMogul",
+                "marketPlace": "threeDifferent",
+                "harbor": 3,
+                "outerPalace": "terrace_oneGrange"
+            }
+        }
+    },
+      {
+        "action": {
+            "properties": {
+                "actionType": "marketPlace",
+                "fameReward": {
+                    "easy": 4,
+                    "normal": 5,
+                    "difficult": 4
+                },
+                "coinReward": {
+                    "easy": 7,
+                    "normal": 8,
+                    "difficult": 9
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 5,
+                "chambers": "Yogi",
+                "marketPlace": "spices",
+                "harbor": 3,
+                "outerPalace": "balcony_twoGreen_onePurple"
+            }
+        }
+    },
+     {
+        "action": {
+            "properties": {
+                "actionType": "marketPlace",
+                "fameReward": {
+                    "easy": 4,
+                    "normal": 4,
+                    "difficult": 4
+                },
+                "coinReward": {
+                    "easy": 8,
+                    "normal": 7,
+                    "difficult": 9
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 9,
+                "chambers": "Dancer",
+                "marketPlace": "threeDifferent",
+                "harbor": 2,
+                "outerPalace": "balcony_twoGreen_onePurple"
+            }
+        }
+    },
+    {
+        "action": {
+            "properties": {
+                "actionType": "chambers",
+                "fameReward": {
+                    "easy": 4,
+                    "normal": 4,
+                    "difficult": 5
+                },
+                "coinReward": {
+                    "easy": 6,
+                    "normal": 8,
+                    "difficult": 7
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 8,
+                "chambers": "Dancer",
+                "marketPlace": "threeDifferent",
+                "harbor": 3,
+                "outerPalace": "terrace_oneBlue"
+            }
+        }
+    },
+     {
+        "action": {
+            "properties": {
+                "actionType": "provinceTileRemoval",
+                "fameReward": {
+                    "easy": 5,
+                    "normal": 5,
+                    "difficult": 5
+                },
+                "coinReward": {
+                    "easy": 8,
+                    "normal": 7,
+                    "difficult": 9
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 2,
+                "chambers": "Dancer",
+                "marketPlace": "threeDifferent",
+                "harbor": 1,
+                "outerPalace": "balcony_twoOrange_oneBlue"
+            }
+        }
+    },
+     {
+        "action": {
+            "properties": {
+                "actionType": "harbor",
+                "fameReward": {
+                    "easy": 4,
+                    "normal": 4,
+                    "difficult": 6
+                },
+                "coinReward": {
+                    "easy": 6,
+                    "normal": 7,
+                    "difficult": 8
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 3,
+                "chambers": "RajaManSingh",
+                "marketPlace": "tea",
+                "harbor": 1,
+                "outerPalace": "balcony_twoBlue_oneGreen"
+            }
+        }
+    },
+    {
+        "action": {
+            "properties": {
+                "actionType": "marketPlace",
+                "fameReward": {
+                    "easy": 4,
+                    "normal": 5,
+                    "difficult": 5
+                },
+                "coinReward": {
+                    "easy": 6,
+                    "normal": 8,
+                    "difficult": 7
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 4,
+                "chambers": "MasterBuilder",
+                "marketPlace": "threeDifferent",
+                "harbor": 1,
+                "outerPalace": "terrace_onePurple"
+            }
+        }
+    },
+    {
+        "action": {
+            "properties": {
+                "actionType": "provinceTileRemoval",
+                "fameReward": {
+                    "easy": 3,
+                    "normal": 5,
+                    "difficult": 4
+                },
+                "coinReward": {
+                    "easy": 8,
+                    "normal": 7,
+                    "difficult": 7
+                }
+            }
+        },
+        "actionResults": {
+            "properties": {
+                "provinceTileRemoval": 10,
+                "chambers": "Yogi",
+                "marketPlace": "spices",
+                "harbor": 2,
+                "outerPalace": "balcony_twoOrange_oneBlue"
+            }
+        }
+    }
+]

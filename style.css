@@ -1,0 +1,117 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: auto;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    margin: unset;
+    margin-top: 8px;
+}
+
+.wrapper {
+    display: flex;
+    max-width: 360px;
+}
+
+.img-container {
+    display: flex;
+    align-items: center;
+    height: 230px;
+}
+
+.action-img {
+    max-width: 150px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    width: 250px;
+    height: 400px;
+    padding: 8px 12px;
+    background-image: url(./assets/background.png);
+    background-size: contain;
+}
+
+.history-clock {
+    display: none;
+    cursor: pointer;
+    width: 32px;
+    position: absolute;
+    right: 16px;
+    top: 12px
+}
+
+.rewards-section {
+    display: flex;
+    gap: 20px;
+}
+
+.rewards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.fame>.icon {
+    height: 30px;
+    object-fit: contain;
+}
+
+.coin>.icon {
+    height: 30px;
+    object-fit: contain
+}
+
+.rewards img {
+    width: 40px;
+}
+
+.value {
+    font-weight: 600;
+}
+
+.levelOne {
+    color: green
+}
+
+.levelTwo {
+    color: rgb(228, 149, 3)
+}
+
+.levelThree {
+    color: red
+}
+
+.card-overlay {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.4)
+}
+
+.history-overlay {
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+.history-overlay .card-overlay {
+    position: absolute;
+    inset: 0px;
+    backdrop-filter: saturate(40%);
+    -webkit-backdrop-filter: saturate(50%);
+}
