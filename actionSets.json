@@ -15,7 +15,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 11,
                 "chambers": "Portuguese",
@@ -41,7 +41,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 1,
                 "chambers": "Portuguese",
@@ -67,7 +67,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 6,
                 "chambers": "RajaManSingh",
@@ -93,7 +93,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 12,
                 "chambers": "RajaManSingh",
@@ -119,7 +119,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 7,
                 "chambers": "GreatMogul",
@@ -145,7 +145,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 5,
                 "chambers": "Yogi",
@@ -171,7 +171,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 9,
                 "chambers": "Dancer",
@@ -197,7 +197,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 8,
                 "chambers": "Dancer",
@@ -223,7 +223,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 2,
                 "chambers": "Dancer",
@@ -249,7 +249,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 3,
                 "chambers": "RajaManSingh",
@@ -275,7 +275,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 4,
                 "chambers": "MasterBuilder",
@@ -301,7 +301,7 @@
                 }
             }
         },
-        "actionResults": {
+        "actionValues": {
             "properties": {
                 "provinceTileRemoval": 10,
                 "chambers": "Yogi",

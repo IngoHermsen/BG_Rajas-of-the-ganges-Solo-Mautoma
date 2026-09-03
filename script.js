@@ -1,10 +1,17 @@
-let cards;
-let playedCards= [];
-let indexOrder;
-let activeHistory = false;
+let actionSets;
+let playedCards = [];
+let actionIdxOrder = [];
+let defaultView = true;
 
-let actionTypeCardIdx;
-let actionResultCardIdx;
+let actionTypeReferenceIdx;
+let actionValueReferenceIdx;
+
+// Card Render Data
+
+let cardTitle;
+let fullImageName;
+let fameRewardObj;
+let coinRewardObj;
 
 // DOM Elements
 
@@ -26,13 +33,16 @@ const historyClockElement = document.getElementById('history-clock')
 
 
 async function init() {
-    // get cards data
     try {
-        const response = await fetch('cards.json');
-        const cardData = await response.json();
+        const response = await fetch('actionSets.json');
+        const actionSetData = await response.json();
 
-        shuffleIndexes(cardData.length);
-        cards = cardData;
+        actionSets = actionSetData;
+        shuffleIndexes(actionSets.length);
+        actionTypeReferenceIdx = actionIdxOrder[0];
+        actionValueReferenceIdx = actionIdxOrder[1];
+
+        createView()
 
     } catch (err) { }
 }
@@ -40,93 +50,95 @@ async function init() {
 init()
 
 function shuffleIndexes(length) {
-    console.log("Shuffled")
-    indexOrder = [];
     // create numbers from 0 to length-1
     for (let i = 0; i < length; i++) {
-        indexOrder.push(i);
+        actionIdxOrder.push(i);
     }
 
     // Fisher-Yates Shuffle
-    for (let i = indexOrder.length - 1; i > 0; i--) {
+    for (let i = actionIdxOrder.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [indexOrder[i], indexOrder[j]] = [indexOrder[j], indexOrder[i]];
-    }
-}
-
-function nextCard() { 
-    if (!activeHistory) {
-        historyClockElement.style.display = 'block';
-        activeHistory = true;
-    }
-    // START
-    // Reshuffle if card pile is empty
-    if (indexOrder.length == 1) {
-        shuffleIndexes(cards.length)
+        [actionIdxOrder[i], actionIdxOrder[j]] = [actionIdxOrder[j], actionIdxOrder[i]];
     }
 
-    // END
-
-    // set Index Numbers of Cards.json for Action Type and Action Result
-    actionTypeCardIdx = indexOrder[0];
-    actionResultCardIdx = indexOrder[1];
-
-    playedCards.push(
-        [
-            {
-                actionTypeCardIdx: actionTypeCardIdx,
-                actionResultCardIdx: actionResultCardIdx
-            }
-        ]
-    )
-
-    indexOrder.shift()
-    createView()
 }
 
 function createView() {
+    getActionData();
+
+    console.log('was here');
+
+    renderCard();
+
+
+}
+
+function nextCard() {
+// ab hier schon regulieren wo die referenzen herkommen (default oder history)
+
+    if (defaultView) {
+        const historyObj = {
+            type: actionTypeReferenceIdx,
+            value: actionValueReferenceIdx
+        }
+
+        playedCards.push(historyObj);
+        console.log('played Cards', playedCards);
+        actionIdxOrder.shift();
+    };
+
+    createView();
+}
+
+
+function getActionData() {
     // card 1 reveals the action type to play in this automa turn
     // card 2 reveals the specific action variant of this action type
-    const actionTypeCard = cards[actionTypeCardIdx];
-    const actionResultCard = cards[actionResultCardIdx];
-    const typeProperties = actionTypeCard.action.properties;
-    const resultProperties = actionResultCard.actionResults.properties;
+    const actionProperties = actionSets[actionTypeReferenceIdx].action.properties
+    const type = actionSets[actionTypeReferenceIdx].action.properties.actionType
 
-    const type = typeProperties.actionType
-    const result = resultProperties[type]
+    // The second card takes that type and saves its value as 'value' variable
+    const actionValueProperties = actionSets[actionTypeReferenceIdx].actionValues.properties
+    const value = actionSets[actionValueReferenceIdx].actionValues.properties[type];
 
-    const fameRewardObj = {
-        levelOne: typeProperties.fameReward.easy,
-        levelTwo: typeProperties.fameReward.normal,
-        levelThree: typeProperties.fameReward.difficult
-    }
-    const coinRewardObj = {
-        levelOne: typeProperties.coinReward.easy,
-        levelTwo: typeProperties.coinReward.normal,
-        levelThree: typeProperties.coinReward.difficult
+
+    fameRewardObj = {
+        levelOne: actionProperties.fameReward.easy,
+        levelTwo: actionProperties.fameReward.normal,
+        levelThree: actionProperties.fameReward.difficult
     }
 
-    const fullImageName = `${type}_${result}`;
-    const actionTitle = getAreaTitle(type);
-    console.log(actionTitle)
+    coinRewardObj = {
+        levelOne: actionProperties.coinReward.easy,
+        levelTwo: actionProperties.coinReward.normal,
+        levelThree: actionProperties.coinReward.difficult
+    }
 
+    fullImageName = `${type}_${value}`;
+    cardTitle = getAreaTitle(type);
 
-    titleElement.innerHTML = actionTitle;
+};
 
-    actionImgElement.innerHTML =  `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="">`;
-    
+function renderCard() {
+    console.log('entered Card Render');
+    titleElement.innerHTML = cardTitle;
+
+    console.log('action cardTitle', cardTitle)
+
+    actionImgElement.innerHTML = `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="">`;
+
     fameRewardLevelOneElement.innerHTML = fameRewardObj.levelOne;
     fameRewardLevelTwoElement.innerHTML = fameRewardObj.levelTwo;
     fameRewardLevelThreeElement.innerHTML = fameRewardObj.levelThree;
-    
+
     coinRewardLevelOneElement.innerHTML = coinRewardObj.levelOne;
     coinRewardLevelTwoElement.innerHTML = coinRewardObj.levelTwo;
     coinRewardLevelThreeElement.innerHTML = coinRewardObj.levelThree;
-};
+}
 
 function getAreaTitle(type) {
     // title depending on type
-    switch(type) {
+    switch (type) {
         case 'provinceTileRemoval':
             return 'Quarry';
         case 'chambers':
@@ -138,10 +150,5 @@ function getAreaTitle(type) {
         case 'outerPalace':
             return 'Palace'
     }
-}
-
-function historyView() {
-    const historyElement = document.getElementById('history');
-    historyElement.style.display = "flex";
 }
 
