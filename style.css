@@ -7,8 +7,9 @@ body {
     align-items: center;
     justify-content: center;
 }
-
+/*  */
 h3 {
+    font-size: 28px;
     margin: unset;
     margin-top: 8px;
 }
@@ -42,8 +43,27 @@ h3 {
     background-size: contain;
 }
 
+.ctrl {
+    z-index: 2;
+    cursor: pointer;
+    font-size: 40px;
+    color: orangered;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left {
+    left: 12px;
+}
+
+.right {
+    right: 12px;
+}
+
 .history-clock {
-    display: none;
+    z-index: 2;
+    display: block;
     cursor: pointer;
     width: 32px;
     position: absolute;
@@ -109,9 +129,12 @@ h3 {
     background-color: rgba(0, 0, 0, 0.3)
 }
 
-.history-overlay .card-overlay {
+.filter-overlay {
+    z-index: 1;
+    display: none;
     position: absolute;
+    border-radius: 25px;
     inset: 0px;
-    backdrop-filter: saturate(40%);
-    -webkit-backdrop-filter: saturate(50%);
+    backdrop-filter: saturate(38%);
+    -webkit-backdrop-filter: saturate(38%);
 }

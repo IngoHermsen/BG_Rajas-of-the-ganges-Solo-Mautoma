@@ -1,10 +1,11 @@
 let actionSets;
-let playedCards = [];
 let actionIdxOrder = [];
 let historyView = false;
 
-let actionTypeReferenceIdx;
-let actionValueReferenceIdx;
+// View Action reference
+
+let actionTypeRefIdx;
+let actionValueRefIdx;
 
 // Card Render Data
 
@@ -12,6 +13,11 @@ let cardTitle;
 let fullImageName;
 let fameRewardObj;
 let coinRewardObj;
+
+// History of played cards
+
+let playedCards = [];
+let playedCardsActiveIdx = null;
 
 // DOM Elements
 
@@ -28,9 +34,8 @@ const fameRewardLevelOneElement = document.getElementById('fameRewardLevelOne');
 const fameRewardLevelTwoElement = document.getElementById('fameRewardLevelTwo');
 const fameRewardLevelThreeElement = document.getElementById('fameRewardLevelThree');
 
-const historyClockElement = document.getElementById('history-clock')
-
-
+const historyClockElement = document.getElementById('history-clock');
+const filterOverlayElement = document.getElementById('filter-overlay')
 
 async function init() {
     try {
@@ -39,8 +44,8 @@ async function init() {
 
         actionSets = actionSetData;
         shuffleIndexes(actionSets.length);
-        actionTypeReferenceIdx = actionIdxOrder[0];
-        actionValueReferenceIdx = actionIdxOrder[1];
+        actionTypeRefIdx = actionIdxOrder[0];
+        actionValueRefIdx = actionIdxOrder[1];
 
         createView()
 
@@ -50,6 +55,7 @@ async function init() {
 init()
 
 function shuffleIndexes(length) {
+    actionIdxOrder = []
     // create numbers from 0 to length-1
     for (let i = 0; i < length; i++) {
         actionIdxOrder.push(i);
@@ -64,48 +70,76 @@ function shuffleIndexes(length) {
 }
 
 function createView() {
+
     getActionData();
 
     renderCard();
-}
+};
 
 function nextCard() {
-    if (!historyView) {
-        const historyObj = {
-            type: actionTypeReferenceIdx,
-            value: actionValueReferenceIdx
-        };
+    if (defaultView) {
+        nextDefaultCard()
+    } else {
+        nextPlayedCard()
+    }
+}
 
-        playedCards.push(historyObj);
-        actionIdxOrder.shift();
+function nextDefaultCard() {
 
-        actionTypeReferenceIdx = actionIdxOrder[0];
-        actionValueReferenceIdx = actionIdxOrder[1];
-    };
-
-    if (historyView) {
-
+    const historyObj = {
+        typeRefIdx: actionTypeRefIdx,
+        valueRefIdx: actionValueRefIdx
     }
 
+    playedCards.push(historyObj);
+    actionIdxOrder.shift();
+
+    if (actionIdxOrder.length == 1) {
+        shuffleIndexes(actionSets.length)
+    }
+
+    setDefaultModeIndexes()
+
     createView();
-
 };
 
-function setActionIdx() {
-
-
+function nextPlayedCard() {
+    playedCardsActiveIdx++
 };
 
+function setDefaultModeIndexes() {
+    actionTypeRefIdx = actionIdxOrder[0];
+    actionValueRefIdx = actionIdxOrder[1];
+}
+
+function initHistoryMode() {
+    filterOverlayElement.style.display = 'block';
+    playedCardsActiveIdx = playedCards.length - 1;
+    card = playedCards[playedCardsActiveIdx];
+
+    actionTypeRefIdx = card.typeRefIdx;
+    actionValueRefIdx = card.valueRefIdx
+};
+
+function toggleView() {
+    defaultView = !defaultView;
+    if (!defaultView) { initHistoryMode() }
+    if (defaultView) {
+        filterOverlayElement.style.display = 'none';
+        setDefaultModeIndexes()
+    }
+        createView();
+}
 
 function getActionData() {
     // card 1 reveals the action type to play in this automa turn
     // card 2 reveals the specific action variant of this action type
-    const actionProperties = actionSets[actionTypeReferenceIdx].action.properties
-    const type = actionSets[actionTypeReferenceIdx].action.properties.actionType
+    const actionProperties = actionSets[actionTypeRefIdx].action.properties
+    const type = actionSets[actionTypeRefIdx].action.properties.actionType
 
     // The second card takes that type and saves its value as 'value' variable
-    const actionValueProperties = actionSets[actionTypeReferenceIdx].actionValues.properties
-    const value = actionValueProperties[type];
+    const actionValueProperties = actionSets[actionTypeRefIdx].actionValues.properties
+    const value = actionSets[actionValueRefIdx].actionValues.properties[type];
 
 
     fameRewardObj = {
@@ -127,6 +161,7 @@ function getActionData() {
 
 function renderCard() {
     titleElement.innerHTML = cardTitle;
+
     
     actionImgElement.innerHTML = `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="">`;
 

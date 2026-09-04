@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rajas Of the Ganges - Mautoma</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <!-- <div class="wrapper"> -->
-        <button onclick="nextCard()">Draw next</button>
-        <div class="card" id="main">
-            <img
-                onclick="historyView()"
-                src="assets/history-clock.png"
-                alt="history-clock-png"
-                class="history-clock"
-                id="history-clock"
-            >
-            <h3 class="title" id="title"></h3>
-            <div class="img-container" id="imgContainer"></div>
-            <section class="rewards-section">
-                <div class="fame rewards">
-                    <img class="icon" src="assets/fame.png" alt="fame-icon">
-                    <span class="fame-reward levelOne value" id="fameRewardLevelOne"></span>
-                    <span class="fame-reward levelTwo value" id="fameRewardLevelTwo"></span>
-                    <span class="fame-reward levelThree value" id="fameRewardLevelThree"></span>
-                </div>
-                <div class="coin rewards">
-                    <img class="icon" src="assets/coin.png" alt="fame-icon">
-                    <span class="coin-reward levelOne value" id="coinRewardLevelOne"></span>
-                    <span class="coin-reward levelTwo value" id="coinRewardLevelTwo"></span>
-                    <span class="coin-reward levelThree value" id="coinRewardLevelThree"></span>
-                </div>
-            </section>
-        </div>
-        <!-- </div> -->
-    </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajas Of the Ganges - Mautoma</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- <div class="wrapper"> -->
+    <div class="card" id="main">
+        
+        <!-- controls -->
+        <span class="ctrl left">&#x25C0;</span>
+        <span onclick="nextCard()" class="ctrl right">&#x25B6;</span>
+        <!--  -->
+
+        <div class="filter-overlay" id="filter-overlay"></div>
+        <img onclick="toggleView()" src="assets/history-clock.png" alt="history-clock-png" class="history-clock"
+            id="history-clock">
+        <h3 class="title" id="title"></h3>
+        <div class="img-container" id="imgContainer"></div>
+        <section class="rewards-section">
+            <div class="fame rewards">
+                <img class="icon" src="assets/fame.png" alt="fame-icon">
+                <span class="fame-reward levelOne value" id="fameRewardLevelOne"></span>
+                <span class="fame-reward levelTwo value" id="fameRewardLevelTwo"></span>
+                <span class="fame-reward levelThree value" id="fameRewardLevelThree"></span>
+            </div>
+            <div class="coin rewards">
+                <img class="icon" src="assets/coin.png" alt="fame-icon">
+                <span class="coin-reward levelOne value" id="coinRewardLevelOne"></span>
+                <span class="coin-reward levelTwo value" id="coinRewardLevelTwo"></span>
+                <span class="coin-reward levelThree value" id="coinRewardLevelThree"></span>
+            </div>
+        </section>
+    </div>
+    <!-- </div> -->
+</body>
+
 </html>
