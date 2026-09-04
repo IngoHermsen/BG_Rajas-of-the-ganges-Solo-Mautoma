@@ -17,7 +17,7 @@ let coinRewardObj;
 // History of played cards
 
 let playedCards = [];
-let playedCardsActiveIdx = null;
+let activeHistoryIdx = null;
 
 // DOM Elements
 
@@ -36,6 +36,8 @@ const fameRewardLevelThreeElement = document.getElementById('fameRewardLevelThre
 
 const historyClockElement = document.getElementById('history-clock');
 const filterOverlayElement = document.getElementById('filter-overlay')
+const controlPrevElement = document.getElementById('control-prev');
+const controlNextElement = document.getElementById('control-next')
 
 async function init() {
     try {
@@ -66,11 +68,10 @@ function shuffleIndexes(length) {
         const j = Math.floor(Math.random() * (i + 1));
         [actionIdxOrder[i], actionIdxOrder[j]] = [actionIdxOrder[j], actionIdxOrder[i]];
     }
-
 }
 
 function createView() {
-
+    setViewElements();
     getActionData();
 
     renderCard();
@@ -80,8 +81,11 @@ function nextCard() {
     if (defaultView) {
         nextDefaultCard()
     } else {
-        nextPlayedCard()
+        nextHistoryCard()
     }
+
+    createView();
+
 }
 
 function nextDefaultCard() {
@@ -99,26 +103,38 @@ function nextDefaultCard() {
     }
 
     setDefaultModeIndexes()
+};
 
+function nextHistoryCard() {
+    activeHistoryIdx++
+
+    setHistoryModeIndexes();
+    createView()
+};
+
+function prevHistoryCard() {
+    activeHistoryIdx--
+
+    setHistoryModeIndexes();
     createView();
-};
-
-function nextPlayedCard() {
-    playedCardsActiveIdx++
-};
+}
 
 function setDefaultModeIndexes() {
     actionTypeRefIdx = actionIdxOrder[0];
     actionValueRefIdx = actionIdxOrder[1];
 }
 
-function initHistoryMode() {
-    filterOverlayElement.style.display = 'block';
-    playedCardsActiveIdx = playedCards.length - 1;
-    card = playedCards[playedCardsActiveIdx];
-
+function setHistoryModeIndexes() {
+    const card = playedCards[activeHistoryIdx];
     actionTypeRefIdx = card.typeRefIdx;
     actionValueRefIdx = card.valueRefIdx
+}
+
+function initHistoryMode() {
+    filterOverlayElement.style.display = 'block';
+    activeHistoryIdx = playedCards.length - 1;
+
+    setHistoryModeIndexes()
 };
 
 function toggleView() {
@@ -128,7 +144,23 @@ function toggleView() {
         filterOverlayElement.style.display = 'none';
         setDefaultModeIndexes()
     }
-        createView();
+    createView();
+}
+
+function setViewElements() {
+    if (defaultView || activeHistoryIdx == 0) {
+        controlPrevElement.style.display = 'none';
+    } else {
+        controlPrevElement.style.display = 'block';
+    };
+
+    if (defaultView || (activeHistoryIdx <= playedCards.length - 2)) {
+        controlNextElement.style.display = 'block';
+    } else {
+        controlNextElement.style.display = 'none';
+    };
+
+    historyClockElement.style.display = playedCards.length == 0 ? 'none' : 'block';
 }
 
 function getActionData() {

@@ -13,9 +13,9 @@
     <!-- <div class="wrapper"> -->
     <div class="card" id="main">
         
-        <!-- controls -->
-        <span class="ctrl left">&#x25C0;</span>
-        <span onclick="nextCard()" class="ctrl right">&#x25B6;</span>
+        <!-- controls - 'previous' not possible in default view, only for history -->
+        <span onclick="prevHistoryCard()" class="ctrl prev" id="control-prev">&#x25C0;</span>
+        <span onclick="nextCard()" class="ctrl next" id="control-next">&#x25B6;</span>
         <!--  -->
 
         <div class="filter-overlay" id="filter-overlay"></div>

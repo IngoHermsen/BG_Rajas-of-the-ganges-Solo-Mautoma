@@ -1,5 +1,5 @@
 body {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
     margin: auto;
     user-select: none;
     display: flex;
@@ -53,11 +53,11 @@ h3 {
     transform: translateY(-50%);
 }
 
-.left {
+.prev {
     left: 12px;
 }
 
-.right {
+.next {
     right: 12px;
 }
 
@@ -98,6 +98,7 @@ h3 {
 }
 
 .value {
+    font-size: 24px;
     font-weight: 600;
 }
 
