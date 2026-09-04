@@ -1,7 +1,7 @@
 let actionSets;
 let playedCards = [];
 let actionIdxOrder = [];
-let defaultView = true;
+let historyView = false;
 
 let actionTypeReferenceIdx;
 let actionValueReferenceIdx;
@@ -66,29 +66,35 @@ function shuffleIndexes(length) {
 function createView() {
     getActionData();
 
-    console.log('was here');
-
     renderCard();
-
-
 }
 
 function nextCard() {
-// ab hier schon regulieren wo die referenzen herkommen (default oder history)
-
-    if (defaultView) {
+    if (!historyView) {
         const historyObj = {
             type: actionTypeReferenceIdx,
             value: actionValueReferenceIdx
-        }
+        };
 
         playedCards.push(historyObj);
-        console.log('played Cards', playedCards);
         actionIdxOrder.shift();
+
+        actionTypeReferenceIdx = actionIdxOrder[0];
+        actionValueReferenceIdx = actionIdxOrder[1];
     };
 
+    if (historyView) {
+
+    }
+
     createView();
-}
+
+};
+
+function setActionIdx() {
+
+
+};
 
 
 function getActionData() {
@@ -99,7 +105,7 @@ function getActionData() {
 
     // The second card takes that type and saves its value as 'value' variable
     const actionValueProperties = actionSets[actionTypeReferenceIdx].actionValues.properties
-    const value = actionSets[actionValueReferenceIdx].actionValues.properties[type];
+    const value = actionValueProperties[type];
 
 
     fameRewardObj = {
@@ -120,11 +126,8 @@ function getActionData() {
 };
 
 function renderCard() {
-    console.log('entered Card Render');
     titleElement.innerHTML = cardTitle;
-
-    console.log('action cardTitle', cardTitle)
-
+    
     actionImgElement.innerHTML = `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="">`;
 
     fameRewardLevelOneElement.innerHTML = fameRewardObj.levelOne;
