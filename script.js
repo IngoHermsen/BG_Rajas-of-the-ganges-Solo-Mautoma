@@ -1,6 +1,6 @@
 let actionSets;
 let actionIdxOrder = [];
-let historyView = false;
+let defaultView = null;
 
 // View Action reference
 
@@ -34,7 +34,8 @@ const fameRewardLevelOneElement = document.getElementById('fameRewardLevelOne');
 const fameRewardLevelTwoElement = document.getElementById('fameRewardLevelTwo');
 const fameRewardLevelThreeElement = document.getElementById('fameRewardLevelThree');
 
-const historyClockElement = document.getElementById('history-clock');
+const historyClockElement = document.getElementById('history-clock-img');
+const closeElement = document.getElementById('close');
 const filterOverlayElement = document.getElementById('filter-overlay')
 const controlPrevElement = document.getElementById('control-prev');
 const controlNextElement = document.getElementById('control-next')
@@ -46,9 +47,11 @@ async function init() {
 
         actionSets = actionSetData;
         shuffleIndexes(actionSets.length);
+
         actionTypeRefIdx = actionIdxOrder[0];
         actionValueRefIdx = actionIdxOrder[1];
 
+        defaultView = true;
         createView()
 
     } catch (err) { }
@@ -85,7 +88,6 @@ function nextCard() {
     }
 
     createView();
-
 }
 
 function nextDefaultCard() {
@@ -160,7 +162,17 @@ function setViewElements() {
         controlNextElement.style.display = 'none';
     };
 
-    historyClockElement.style.display = playedCards.length == 0 ? 'none' : 'block';
+    if (playedCards.length == 0 || !defaultView) {
+        historyClockElement.style.display = 'none'
+    } else {
+        historyClockElement.style.display = 'block'
+    }
+
+    if (!defaultView) {
+        closeElement.style.display = 'block'
+    } else {
+        closeElement.style.display = 'none'
+    }
 }
 
 function getActionData() {
@@ -192,9 +204,9 @@ function getActionData() {
 };
 
 function renderCard() {
+
     titleElement.innerHTML = cardTitle;
 
-    
     actionImgElement.innerHTML = `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="">`;
 
     fameRewardLevelOneElement.innerHTML = fameRewardObj.levelOne;

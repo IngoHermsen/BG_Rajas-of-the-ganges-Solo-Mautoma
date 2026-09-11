@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <!-- <div class="wrapper"> -->
+   <!-- <div class="wrapper"> -->
     <div class="card" id="main">
         
         <!-- controls - 'previous' not possible in default view, only for history -->
@@ -19,8 +19,9 @@
         <!--  -->
 
         <div class="filter-overlay" id="filter-overlay"></div>
-        <img onclick="toggleView()" src="assets/history-clock.png" alt="history-clock-png" class="history-clock"
-            id="history-clock">
+        <img onclick="toggleView()" src="assets/history-clock.png" alt="history-clock-png" class="history-toggle open"
+            id="history-clock-img">
+        <span onclick="toggleView()" class="history-toggle close" id="close">&#8594;</span>
         <h3 class="title" id="title"></h3>
         <div class="img-container" id="imgContainer"></div>
         <section class="rewards-section">
