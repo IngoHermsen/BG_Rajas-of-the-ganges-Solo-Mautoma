@@ -5,13 +5,13 @@
                 "actionType": "harbor",
                 "fameReward": {
                     "easy": 4,
-                    "normal": 4,
-                    "difficult": 4
+                    "medium": 4,
+                    "hard": 4
                 },
                 "coinReward": {
                     "easy": 7,
-                    "normal": 7,
-                    "difficult": 7
+                    "medium": 7,
+                    "hard": 7
                 }
             }
         },
@@ -31,13 +31,13 @@
                 "actionType": "provinceTileRemoval",
                 "fameReward": {
                     "easy": 3,
-                    "normal": 4,
-                    "difficult": 5
+                    "medium": 4,
+                    "hard": 5
                 },
                 "coinReward": {
                     "easy": 7,
-                    "normal": 7,
-                    "difficult": 8
+                    "medium": 7,
+                    "hard": 8
                 }
             }
         },
@@ -57,13 +57,13 @@
                 "actionType": "provinceTileRemoval",
                 "fameReward": {
                     "easy": 5,
-                    "normal": 4,
-                    "difficult": 5
+                    "medium": 4,
+                    "hard": 5
                 },
                 "coinReward": {
                     "easy": 8,
-                    "normal": 7,
-                    "difficult": 8
+                    "medium": 7,
+                    "hard": 8
                 }
             }
         },
@@ -83,13 +83,13 @@
                 "actionType": "chambers",
                 "fameReward": {
                     "easy": 5,
-                    "normal": 5,
-                    "difficult": 6
+                    "medium": 5,
+                    "hard": 6
                 },
                 "coinReward": {
                     "easy": 7,
-                    "normal": 7,
-                    "difficult": 7
+                    "medium": 7,
+                    "hard": 7
                 }
             }
         },
@@ -109,13 +109,13 @@
                 "actionType": "outerPalace",
                 "fameReward": {
                     "easy": 5,
-                    "normal": 4,
-                    "difficult": 4
+                    "medium": 4,
+                    "hard": 4
                 },
                 "coinReward": {
                     "easy": 7,
-                    "normal": 8,
-                    "difficult": 8
+                    "medium": 8,
+                    "hard": 8
                 }
             }
         },
@@ -135,13 +135,13 @@
                 "actionType": "marketPlace",
                 "fameReward": {
                     "easy": 4,
-                    "normal": 5,
-                    "difficult": 4
+                    "medium": 5,
+                    "hard": 4
                 },
                 "coinReward": {
                     "easy": 7,
-                    "normal": 8,
-                    "difficult": 9
+                    "medium": 8,
+                    "hard": 9
                 }
             }
         },
@@ -161,13 +161,13 @@
                 "actionType": "marketPlace",
                 "fameReward": {
                     "easy": 4,
-                    "normal": 4,
-                    "difficult": 4
+                    "medium": 4,
+                    "hard": 4
                 },
                 "coinReward": {
                     "easy": 8,
-                    "normal": 7,
-                    "difficult": 9
+                    "medium": 7,
+                    "hard": 9
                 }
             }
         },
@@ -187,13 +187,13 @@
                 "actionType": "chambers",
                 "fameReward": {
                     "easy": 4,
-                    "normal": 4,
-                    "difficult": 5
+                    "medium": 4,
+                    "hard": 5
                 },
                 "coinReward": {
                     "easy": 6,
-                    "normal": 8,
-                    "difficult": 7
+                    "medium": 8,
+                    "hard": 7
                 }
             }
         },
@@ -213,13 +213,13 @@
                 "actionType": "provinceTileRemoval",
                 "fameReward": {
                     "easy": 5,
-                    "normal": 5,
-                    "difficult": 5
+                    "medium": 5,
+                    "hard": 5
                 },
                 "coinReward": {
                     "easy": 8,
-                    "normal": 7,
-                    "difficult": 9
+                    "medium": 7,
+                    "hard": 9
                 }
             }
         },
@@ -239,13 +239,13 @@
                 "actionType": "harbor",
                 "fameReward": {
                     "easy": 4,
-                    "normal": 4,
-                    "difficult": 6
+                    "medium": 4,
+                    "hard": 6
                 },
                 "coinReward": {
                     "easy": 6,
-                    "normal": 7,
-                    "difficult": 8
+                    "medium": 7,
+                    "hard": 8
                 }
             }
         },
@@ -265,13 +265,13 @@
                 "actionType": "marketPlace",
                 "fameReward": {
                     "easy": 4,
-                    "normal": 5,
-                    "difficult": 5
+                    "medium": 5,
+                    "hard": 5
                 },
                 "coinReward": {
                     "easy": 6,
-                    "normal": 8,
-                    "difficult": 7
+                    "medium": 8,
+                    "hard": 7
                 }
             }
         },
@@ -291,13 +291,13 @@
                 "actionType": "provinceTileRemoval",
                 "fameReward": {
                     "easy": 3,
-                    "normal": 5,
-                    "difficult": 4
+                    "medium": 5,
+                    "hard": 4
                 },
                 "coinReward": {
                     "easy": 8,
-                    "normal": 7,
-                    "difficult": 7
+                    "medium": 7,
+                    "hard": 7
                 }
             }
         },

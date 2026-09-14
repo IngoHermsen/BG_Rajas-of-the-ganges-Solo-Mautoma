@@ -7,7 +7,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-};
+    height: 100vh;
+}
+
+;
 
 /*  */
 h3 {
@@ -21,9 +24,66 @@ h3 {
     max-width: 360px;
 }
 
-.img-container {
+.title {
+  color: #db6c0a;
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.5),
+    0 0 12px rgba(100, 180, 255, 0.35),
+    0 3px 5px rgba(0, 0, 0, 0.4),
+    -1px -1px 1px rgba(255, 255, 255, 0.35),
+    1px 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+.start-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
     display: flex;
+    flex-direction: column;
     align-items: center;
+}
+
+.start-screen button {
+    cursor: pointer;
+    margin-top: 24px;
+}
+
+.difficulty-selection {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    z-index: 4;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+}
+
+.difficulty-selection .option {
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+    width: fit-content;
+    height: 30px;
+}
+
+.difficulty-selection .option:hover::before {
+        content: "\2713 "
+}
+
+.difficulty-selection .selected::before {
+        content: "\2713 "
+}
+
+.img-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     height: 230px;
 }
 
@@ -36,29 +96,101 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 8px 12px;
     background-color: rgba(0, 0, 0, 0.1);
     background-size: contain;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
+}
+
+.action-title {
+    font-size: 28px;
 }
 
 .ctrl {
-    z-index: 2;
+    z-index: 3;
     cursor: pointer;
     font-size: 40px;
     color: orangered;
     position: absolute;
     top: 50%;
+    right: 12px;
     transform: translateY(-50%);
 }
 
-.prev {
-    left: 12px;
+.history-overlay {
+    display: none;
+    position: absolute;
+    inset: 0px;
+    background-color: white;
+    z-index: 4;
+    overflow-y: scroll;
 }
 
-.next {
-    right: 12px;
+.history-overlay .close {
+    position: fixed;
+    display: block;
+    width: 95%;
+    padding-right: 48px;
+    text-align: end;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: white;
+}
+
+.history-list {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.history-list .entry {
+     padding-left: 12px;
+     padding-right: 12px;
+     display: flex;
+     gap: 28px;
+     align-items: center;
+     height: 100px;
+}
+
+.history-list .entry.evenEntry {
+    background-color: rgb(252, 222, 174)
+}
+
+.history-list > .entry > img {
+    width: 200px;
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.history-list .block {
+    display: flex;
+
+}
+
+.history-list .entry .icon {
+    height: auto;
+    width: 30px;
+}
+
+.history-list .entry .count {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.history-list .entry .entry-rewards {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.history-list .entry .block {
+    display: flex;
+    font-weight: bold;
+    font-size: 24px;
+    gap: 24px;    
 }
 
 .history-toggle {
@@ -71,20 +203,13 @@ h3 {
     top: 12px
 }
 
-.history-toggle.close {
-    font-size: 24px;
-    font-weight: 600;
-}
-
-
 .rewards-section {
     display: flex;
-    gap: 20px;
+    gap: 40px;
 }
 
 .rewards {
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 8px;
 }
@@ -104,44 +229,23 @@ h3 {
 }
 
 .value {
-    font-size: 24px;
+    font-size: 48px;
     font-weight: 600;
 }
 
-.levelOne {
+.easy {
     color: green
 }
 
-.levelTwo {
+.medium {
     color: rgb(228, 149, 3)
 }
 
-.levelThree {
+.hard {
     color: red
 }
 
 .card-overlay {
     position: absolute;
     color: rgba(255, 255, 255, 0.4)
-}
-
-.history-overlay {
-    position: absolute;
-    top: 0px;
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3)
-}
-
-.filter-overlay {
-    z-index: 1;
-    display: none;
-    position: absolute;
-    border-radius: 25px;
-    inset: 0px;
-    backdrop-filter: saturate(38%);
-    -webkit-backdrop-filter: saturate(38%);
 }

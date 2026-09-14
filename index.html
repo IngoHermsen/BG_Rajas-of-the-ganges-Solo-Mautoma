@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rajas Of the Ganges - Mautoma</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
-
-<body>
-   <!-- <div class="wrapper"> -->
-    <div class="card" id="main">
-        
-        <!-- controls - 'previous' not possible in default view, only for history -->
-        <span onclick="prevHistoryCard()" class="ctrl prev" id="control-prev">&#x25C0;</span>
-        <span onclick="nextCard()" class="ctrl next" id="control-next">&#x25B6;</span>
-        <!--  -->
-
-        <div class="filter-overlay" id="filter-overlay"></div>
-        <img onclick="toggleView()" src="assets/history-clock.png" alt="history-clock-png" class="history-toggle open"
-            id="history-clock-img">
-        <span onclick="toggleView()" class="history-toggle close" id="close">&#8594;</span>
-        <h3 class="title" id="title"></h3>
-        <div class="img-container" id="imgContainer"></div>
-        <section class="rewards-section">
-            <div class="fame rewards">
-                <img class="icon" src="assets/fame.png" alt="fame-icon">
-                <span class="fame-reward levelOne value" id="fameRewardLevelOne"></span>
-                <span class="fame-reward levelTwo value" id="fameRewardLevelTwo"></span>
-                <span class="fame-reward levelThree value" id="fameRewardLevelThree"></span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rajas Of the Ganges - Mautoma</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div>
+            <h1 class="title">Rajas Of The Ganges</h1>
+        </div>
+        <!-- <div class="wrapper"> -->
+        <div class="card" id="main">
+            <div class="difficulty-selection start">
+                <h3>Select Level</h3>
+                <span onclick="setDifficulty('easy')" class="option easy" id="easy">easy</span>
+                <span onclick="setDifficulty('medium')" class="option medium" id="medium">medium</span>
+                <span onclick="setDifficulty('hard')" class="option hard" id="hard">hard</span>
+                <button onclick="start()" disabled id="startBtn">Draw first Action</button>
             </div>
-            <div class="coin rewards">
-                <img class="icon" src="assets/coin.png" alt="fame-icon">
-                <span class="coin-reward levelOne value" id="coinRewardLevelOne"></span>
-                <span class="coin-reward levelTwo value" id="coinRewardLevelTwo"></span>
-                <span class="coin-reward levelThree value" id="coinRewardLevelThree"></span>
+            <!-- controls - 'previous' not possible in default view, only for history -->
+            <!--  -->
+            <img
+                onclick="toggleHistory()"
+                src="assets/history-clock.png"
+                alt="history-clock-png"
+                class="history-toggle open"
+                id="history-clock-img"
+            >
+            <h3 class="action-title" id="actionTitle"></h3>
+            <div class="img-container" id="imgContainer">
+                <span onclick="nextAction()" class="ctrl next" id="control-next">&#x25B6;</span>
+                <div id="action-image"></div>
             </div>
-        </section>
-    </div>
-    <!-- </div> -->
-</body>
-
+            <section class="rewards-section">
+                <div class="fame rewards">
+                    <img class="icon" src="assets/fame.png" alt="fame-icon">
+                    <span class="fame-reward reward value" id="fameReward"></span>
+                </div class="rewards">
+                <div class="coin rewards">
+                    <img class="icon" src="assets/coin.png" alt="fame-icon">
+                    <span class="coin-reward reward value" id="coinReward"></span>
+                </div>
+            </section>
+            <!-- History Overlay -->
+            <div class="history-overlay" id="history-overlay">
+                <span onclick="toggleHistory()" class="close" id="close">back &#8594;</span>
+                <div class="history-list" id="history-list">
+                    <!-- dynamically rendered history entries --></div>
+            </div>
+        </div>
+    </body>
 </html>

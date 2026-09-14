@@ -1,3 +1,5 @@
+let difficulty;
+
 let actionSets;
 let actionIdxOrder = [];
 let defaultView = null;
@@ -11,34 +13,57 @@ let actionValueRefIdx;
 
 let cardTitle;
 let fullImageName;
-let fameRewardObj;
-let coinRewardObj;
+let fameRewardValue;
+let coinRewardValue;
 
 // History of played cards
 
-let playedCards = [];
-let activeHistoryIdx = null;
+let showHistory = false;
+let playedActions = [];
 
 // DOM Elements
 
-const titleElement = document.getElementById('title');
+const actionTitleElement = document.getElementById('actionTitle');
 
 const actionTypeElement = document.getElementById('actionType');
 const actionImgElement = document.getElementById('imgContainer');
 
-const coinRewardLevelOneElement = document.getElementById('coinRewardLevelOne');
-const coinRewardLevelTwoElement = document.getElementById('coinRewardLevelTwo');
-const coinRewardLevelThreeElement = document.getElementById('coinRewardLevelThree');
-
-const fameRewardLevelOneElement = document.getElementById('fameRewardLevelOne');
-const fameRewardLevelTwoElement = document.getElementById('fameRewardLevelTwo');
-const fameRewardLevelThreeElement = document.getElementById('fameRewardLevelThree');
+const coinRewardElement = document.getElementById('coinReward');
+const fameRewardElement = document.getElementById('fameReward');
 
 const historyClockElement = document.getElementById('history-clock-img');
 const closeElement = document.getElementById('close');
-const filterOverlayElement = document.getElementById('filter-overlay')
+const historyOverlayElement = document.getElementById('history-overlay')
 const controlPrevElement = document.getElementById('control-prev');
-const controlNextElement = document.getElementById('control-next')
+const controlNextElement = document.getElementById('control-next');
+
+function setDifficulty(modeString) {
+    const optionElements = document.getElementsByClassName('option');
+    const buttonElement = document.getElementById('startBtn');
+    console.log(optionElements);
+
+    for (el of optionElements) {
+        if (el.id == modeString) {
+            el.classList.add('selected');
+        } else {
+            el.classList.remove('selected')
+        }
+    }
+
+    buttonElement.disabled = false;
+    difficulty = modeString;
+    console.log(difficulty)
+};
+
+function start() {
+    const startScreenElements = document.getElementsByClassName('start');
+
+    for (const el of startScreenElements) {
+        el.style.display = 'none';
+    };
+
+    init()
+};
 
 async function init() {
     try {
@@ -52,12 +77,11 @@ async function init() {
         actionValueRefIdx = actionIdxOrder[1];
 
         defaultView = true;
+
         createView()
 
     } catch (err) { }
-}
-
-init()
+};
 
 function shuffleIndexes(length) {
     actionIdxOrder = []
@@ -71,108 +95,60 @@ function shuffleIndexes(length) {
         const j = Math.floor(Math.random() * (i + 1));
         [actionIdxOrder[i], actionIdxOrder[j]] = [actionIdxOrder[j], actionIdxOrder[i]];
     }
-}
+};
 
 function createView() {
     setViewElements();
     getActionData();
-
     renderCard();
 };
 
-function nextCard() {
-    if (defaultView) {
-        nextDefaultCard()
-    } else {
-        nextHistoryCard()
-    }
-
-    createView();
-}
-
-function nextDefaultCard() {
+function nextAction() {
 
     const historyObj = {
-        typeRefIdx: actionTypeRefIdx,
-        valueRefIdx: actionValueRefIdx
+        count: playedActions.length + 1,
+        imgName: fullImageName,
+        coinRewardValue: coinRewardValue,
+        fameRewardValue: fameRewardValue,
+        difficulty: difficulty
     }
 
-    playedCards.push(historyObj);
+    playedActions.push(historyObj);
     actionIdxOrder.shift();
 
     if (actionIdxOrder.length == 1) {
         shuffleIndexes(actionSets.length)
     }
 
-    setDefaultModeIndexes()
-};
+    setActionIndexes();
 
-function nextHistoryCard() {
-    activeHistoryIdx++
-
-    setHistoryModeIndexes();
     createView()
 };
 
-function prevHistoryCard() {
-    activeHistoryIdx--
-
-    setHistoryModeIndexes();
-    createView();
-}
-
-function setDefaultModeIndexes() {
+function setActionIndexes() {
     actionTypeRefIdx = actionIdxOrder[0];
     actionValueRefIdx = actionIdxOrder[1];
-}
-
-function setHistoryModeIndexes() {
-    const card = playedCards[activeHistoryIdx];
-    actionTypeRefIdx = card.typeRefIdx;
-    actionValueRefIdx = card.valueRefIdx
-}
-
-function initHistoryMode() {
-    filterOverlayElement.style.display = 'block';
-    activeHistoryIdx = playedCards.length - 1;
-
-    setHistoryModeIndexes()
 };
 
-function toggleView() {
-    defaultView = !defaultView;
-    if (!defaultView) { initHistoryMode() }
-    if (defaultView) {
-        filterOverlayElement.style.display = 'none';
-        setDefaultModeIndexes()
+function toggleHistory() {
+    historyOverlayElement.style.display = showHistory ? 'none' : 'block';
+    showHistory = !showHistory;
+
+    if(showHistory) {
+       renderHistory();
     }
-    createView();
 }
 
 function setViewElements() {
-    if (defaultView || activeHistoryIdx == 0) {
-        controlPrevElement.style.display = 'none';
-    } else {
-        controlPrevElement.style.display = 'block';
-    };
 
-    if (defaultView || (activeHistoryIdx <= playedCards.length - 2)) {
-        controlNextElement.style.display = 'block';
+    if (playedActions.length == 0) {
+        historyClockElement.style.display = 'none';
     } else {
-        controlNextElement.style.display = 'none';
-    };
-
-    if (playedCards.length == 0 || !defaultView) {
-        historyClockElement.style.display = 'none'
-    } else {
-        historyClockElement.style.display = 'block'
+        historyClockElement.style.display = 'block';
     }
 
-    if (!defaultView) {
-        closeElement.style.display = 'block'
-    } else {
-        closeElement.style.display = 'none'
-    }
+    fameRewardElement.classList.add(difficulty);
+    coinRewardElement.classList.add(difficulty)
 }
 
 function getActionData() {
@@ -182,40 +158,54 @@ function getActionData() {
     const type = actionSets[actionTypeRefIdx].action.properties.actionType
 
     // The second card takes that type and saves its value as 'value' variable
-    const actionValueProperties = actionSets[actionTypeRefIdx].actionValues.properties
     const value = actionSets[actionValueRefIdx].actionValues.properties[type];
 
+    fameRewardValue = actionProperties.fameReward[difficulty];
+    coinRewardValue = actionProperties.coinReward[difficulty]
 
-    fameRewardObj = {
-        levelOne: actionProperties.fameReward.easy,
-        levelTwo: actionProperties.fameReward.normal,
-        levelThree: actionProperties.fameReward.difficult
-    }
-
-    coinRewardObj = {
-        levelOne: actionProperties.coinReward.easy,
-        levelTwo: actionProperties.coinReward.normal,
-        levelThree: actionProperties.coinReward.difficult
-    }
 
     fullImageName = `${type}_${value}`;
+
     cardTitle = getAreaTitle(type);
 
 };
 
 function renderCard() {
 
-    titleElement.innerHTML = cardTitle;
+    document.getElementById('action-image').remove(); 
 
-    actionImgElement.innerHTML = `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="">`;
+    actionTitleElement.innerHTML = cardTitle;
 
-    fameRewardLevelOneElement.innerHTML = fameRewardObj.levelOne;
-    fameRewardLevelTwoElement.innerHTML = fameRewardObj.levelTwo;
-    fameRewardLevelThreeElement.innerHTML = fameRewardObj.levelThree;
+    actionImgElement.inneHTML = `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="" id='action-image'>`;
 
-    coinRewardLevelOneElement.innerHTML = coinRewardObj.levelOne;
-    coinRewardLevelTwoElement.innerHTML = coinRewardObj.levelTwo;
-    coinRewardLevelThreeElement.innerHTML = coinRewardObj.levelThree;
+    fameRewardElement.innerHTML = fameRewardValue;
+
+    coinRewardElement.innerHTML = coinRewardValue;
+}
+
+function renderHistory() {
+    const historyListElement = document.getElementById('history-list');
+    historyListElement.innerHTML = '';
+
+    playedActions.toReversed().forEach((a, idx) => {
+        historyListElement.insertAdjacentHTML('beforeEnd', 
+            `<div class="entry ${ (a.count % 2) == 0 ? 'evenEntry' : ''}">
+                        <span class="count">${a.count}</span>
+                        <img src="assets/actionIcons/${a.imgName}.png" alt="${a.imgName}">
+                        <div class="entry-rewards">
+                            <div class="block">
+                                <img class="icon" src="assets/fame.png" alt="fame-icon">
+                                <span class="fame-value ${a.difficulty}">${a.fameRewardValue}</span>
+                            </div>
+                            <div class="block">
+                                <img class="icon" src="assets/coin.png" alt="coin-icon">
+                                <span class="coin-value ${a.difficulty}">${a.coinRewardValue}</span>
+                            </div>
+                        </div>
+                    </div>`
+        )
+    })
+
 }
 
 function getAreaTitle(type) {
