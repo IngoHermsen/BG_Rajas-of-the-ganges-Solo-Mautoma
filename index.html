@@ -19,9 +19,17 @@
                 <span onclick="setDifficulty('medium')" class="option medium" id="medium">medium</span>
                 <span onclick="setDifficulty('hard')" class="option hard" id="hard">hard</span>
                 <button onclick="start()" disabled id="startBtn">Draw first Action</button>
+                       <div class="footer">
+                <span>App version of the Solo Automa created by Mauro from
+                    <a href="https://mautoma.com" target="_blank">mautoma.com</a>
+                </span>
+                <span>For rules and gameplay visit the game page on
+                <a href="https://mautoma.com/rajas-of-the-ganges" target="_blank">mautoma.com</a>
+
+                </span>
             </div>
-            <!-- controls - 'previous' not possible in default view, only for history -->
-            <!--  -->
+            </div>
+            <!-- controls - 'previous' not visible in default view, only for history -->
             <img
                 onclick="toggleHistory()"
                 src="assets/history-clock.png"
@@ -30,9 +38,8 @@
                 id="history-clock-img"
             >
             <h3 class="action-title" id="actionTitle"></h3>
-            <div class="img-container" id="imgContainer">
-                <span onclick="nextAction()" class="ctrl next" id="control-next">&#x25B6;</span>
-                <div id="action-image"></div>
+            <div class="img-container">
+            <img class="action-img" src="assets/actionIcons/chambers_Dancer.png" alt="actionImage" id="actionImage">
             </div>
             <section class="rewards-section">
                 <div class="fame rewards">
@@ -44,11 +51,14 @@
                     <span class="coin-reward reward value" id="coinReward"></span>
                 </div>
             </section>
+            <button class="next-button" onclick="nextAction()">NEXT</button>
             <!-- History Overlay -->
             <div class="history-overlay" id="history-overlay">
                 <span onclick="toggleHistory()" class="close" id="close">back &#8594;</span>
                 <div class="history-list" id="history-list">
-                    <!-- dynamically rendered history entries --></div>
+                    
+                    <!-- dynamically rendered history entries -->
+                    </div>
             </div>
         </div>
     </body>

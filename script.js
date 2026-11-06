@@ -26,7 +26,7 @@ let playedActions = [];
 const actionTitleElement = document.getElementById('actionTitle');
 
 const actionTypeElement = document.getElementById('actionType');
-const actionImgElement = document.getElementById('imgContainer');
+const actionImgElement = document.getElementById('actionImage');
 
 const coinRewardElement = document.getElementById('coinReward');
 const fameRewardElement = document.getElementById('fameReward');
@@ -98,6 +98,7 @@ function shuffleIndexes(length) {
 };
 
 function createView() {
+    console.log('faReEl', fameRewardElement)
     setViewElements();
     getActionData();
     renderCard();
@@ -134,8 +135,8 @@ function toggleHistory() {
     historyOverlayElement.style.display = showHistory ? 'none' : 'block';
     showHistory = !showHistory;
 
-    if(showHistory) {
-       renderHistory();
+    if (showHistory) {
+        renderHistory();
     }
 }
 
@@ -146,6 +147,8 @@ function setViewElements() {
     } else {
         historyClockElement.style.display = 'block';
     }
+
+    console.log('fameRewardElement', fameRewardElement)
 
     fameRewardElement.classList.add(difficulty);
     coinRewardElement.classList.add(difficulty)
@@ -171,12 +174,11 @@ function getActionData() {
 };
 
 function renderCard() {
-
-    document.getElementById('action-image').remove(); 
-
     actionTitleElement.innerHTML = cardTitle;
 
-    actionImgElement.inneHTML = `<img class="action-img" src="assets/actionIcons/${fullImageName}.png" alt="" id='action-image'>`;
+    actionImgElement.src = `assets/actionIcons/${fullImageName}.png`;
+
+    // actionImgElement
 
     fameRewardElement.innerHTML = fameRewardValue;
 
@@ -188,8 +190,8 @@ function renderHistory() {
     historyListElement.innerHTML = '';
 
     playedActions.toReversed().forEach((a, idx) => {
-        historyListElement.insertAdjacentHTML('beforeEnd', 
-            `<div class="entry ${ (a.count % 2) == 0 ? 'evenEntry' : ''}">
+        historyListElement.insertAdjacentHTML('beforeEnd',
+            `<div class="entry ${(a.count % 2) == 0 ? 'evenEntry' : ''}">
                         <span class="count">${a.count}</span>
                         <img src="assets/actionIcons/${a.imgName}.png" alt="${a.imgName}">
                         <div class="entry-rewards">

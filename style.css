@@ -1,6 +1,7 @@
 body {
     position: relative;
-    font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    font-family: 'Source Sans Pro', 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    /* font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; */
     margin: auto;
     user-select: none;
     display: flex;
@@ -10,13 +11,31 @@ body {
     height: 100vh;
 }
 
-;
+h1 {
+    text-align: center;
+}
 
 /*  */
 h3 {
     font-size: 28px;
     margin: unset;
     margin-top: 8px;
+}
+
+button {
+    cursor: pointer;
+    width: 100px;
+    outline: unset;
+}
+
+.footer {
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: grey;
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .wrapper {
@@ -46,6 +65,7 @@ h3 {
 .start-screen button {
     cursor: pointer;
     margin-top: 24px;
+
 }
 
 .difficulty-selection {
@@ -95,9 +115,11 @@ h3 {
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.1);
     background-size: contain;
+    max-width: 420px;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
@@ -128,7 +150,7 @@ h3 {
 }
 
 .history-overlay .close {
-    position: fixed;
+    cursor: pointer;
     display: block;
     width: 95%;
     padding-right: 48px;
@@ -160,7 +182,7 @@ h3 {
 }
 
 .history-list > .entry > img {
-    width: 200px;
+    width: 150px;
     max-height: 80%;
     object-fit: contain;
 }
@@ -176,7 +198,8 @@ h3 {
 }
 
 .history-list .entry .count {
-    font-size: 24px;
+    width: 30px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -197,7 +220,7 @@ h3 {
     z-index: 2;
     display: block;
     cursor: pointer;
-    width: 32px;
+    width: 40px;
     position: absolute;
     right: 16px;
     top: 12px
@@ -206,6 +229,7 @@ h3 {
 .rewards-section {
     display: flex;
     gap: 40px;
+    margin-bottom: 20px;
 }
 
 .rewards {
