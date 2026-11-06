@@ -40,7 +40,6 @@ const controlNextElement = document.getElementById('control-next');
 function setDifficulty(modeString) {
     const optionElements = document.getElementsByClassName('option');
     const buttonElement = document.getElementById('startBtn');
-    console.log(optionElements);
 
     for (el of optionElements) {
         if (el.id == modeString) {
@@ -52,7 +51,6 @@ function setDifficulty(modeString) {
 
     buttonElement.disabled = false;
     difficulty = modeString;
-    console.log(difficulty)
 };
 
 function start() {
@@ -98,7 +96,6 @@ function shuffleIndexes(length) {
 };
 
 function createView() {
-    console.log('faReEl', fameRewardElement)
     setViewElements();
     getActionData();
     renderCard();
@@ -146,10 +143,8 @@ function setViewElements() {
         historyClockElement.style.display = 'none';
     } else {
         historyClockElement.style.display = 'block';
-    }
-
-    console.log('fameRewardElement', fameRewardElement)
-
+    };
+    
     fameRewardElement.classList.add(difficulty);
     coinRewardElement.classList.add(difficulty)
 }
