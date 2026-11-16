@@ -126,7 +126,7 @@ button {
 }
 
 .animate-zoom {
-    animation: zoomIn 500ms ease-out forwards;
+    animation: zoomIn 800ms ease-out forwards;
 }
 
 @keyframes zoomIn {
