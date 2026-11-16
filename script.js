@@ -24,7 +24,7 @@ let playedActions = [];
 // DOM Elements
 
 const activeActionElement = document.getElementById('activeAction')
-const actionTitleElement = document.getElementById('actionTitle');
+const actionTitleElement = document.getElementById('actionTitleText');
 
 const actionTypeElement = document.getElementById('actionType');
 const actionImgElement = document.getElementById('actionImage');
@@ -173,7 +173,7 @@ function getActionData() {
 };
 
 function renderCard() {
-    actionTitleElement.innerHTML = cardTitle;
+    actionTitleElement.innerHTML = cardTitle.toUpperCase();
 
     changeImage()
 
