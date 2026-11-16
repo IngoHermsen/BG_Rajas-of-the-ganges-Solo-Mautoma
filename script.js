@@ -183,11 +183,14 @@ function renderCard() {
 }
 
 function changeImage() {
-    // Animation entfernen
+// Animation entfernen
   actionImgElement.classList.remove("animate-zoom");
 
-  // Bildreferenz ändern
-  actionImgElement.src = `assets/actionIcons/${fullImageName}.png`;
+  // Source-Attribut entfernen
+  actionImgElement.removeAttribute('src');
+
+  // Neue Bildquelle hinzufügen
+  actionImgElement.setAttribute('src', `assets/actionIcons/${fullImageName}.png`);
 
   // Nächsten Frame abwarten
   requestAnimationFrame(() => {
