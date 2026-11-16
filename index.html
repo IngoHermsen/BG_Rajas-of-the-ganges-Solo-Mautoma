@@ -16,6 +16,10 @@
     <!-- <div class="wrapper"> -->
     <div class="card" id="main">
         <div class="difficulty-selection start">
+            <header>
+                <span>Solo mode by</span>
+                <h3><img src="/assets/mautoma-logo.webp" alt="Mautoma Logo"></h3>
+            </header>
             <h3>Select Level</h3>
             <span onclick="setDifficulty('easy')" class="option easy" id="easy">easy</span>
             <span onclick="setDifficulty('medium')" class="option medium" id="medium">medium</span>
@@ -32,8 +36,8 @@
             </div>
         </div>
         <!-- controls - 'previous' not visible in default view, only for history -->
-        <img onclick="toggleHistory()" src="assets/history-clock.png" alt="history-clock-png"
-            class="history-toggle" id="history-clock-img">
+        <img onclick="toggleHistory()" src="assets/history-clock.png" alt="history-clock-png" class="history-toggle"
+            id="history-clock-img">
         <div class="active-action" id="activeAction">
             <h3 class="action-title">
                 <span>&laquo;</span>
