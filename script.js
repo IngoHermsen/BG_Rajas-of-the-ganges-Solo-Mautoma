@@ -23,6 +23,7 @@ let playedActions = [];
 
 // DOM Elements
 
+const activeActionElement = document.getElementById('activeAction')
 const actionTitleElement = document.getElementById('actionTitle');
 
 const actionTypeElement = document.getElementById('actionType');
@@ -129,8 +130,11 @@ function setActionIndexes() {
 };
 
 function toggleHistory() {
-    historyOverlayElement.style.display = showHistory ? 'none' : 'block';
     showHistory = !showHistory;
+
+    historyOverlayElement.style.display = showHistory ? 'block' : 'none';
+    activeActionElement.style.opacity = showHistory ? 0 : 1;
+
 
     if (showHistory) {
         renderHistory();
@@ -171,13 +175,24 @@ function getActionData() {
 function renderCard() {
     actionTitleElement.innerHTML = cardTitle;
 
-    actionImgElement.src = `assets/actionIcons/${fullImageName}.png`;
-
-    // actionImgElement
+    changeImage()
 
     fameRewardElement.innerHTML = fameRewardValue;
 
     coinRewardElement.innerHTML = coinRewardValue;
+}
+
+function changeImage() {
+    // Animation entfernen
+  actionImgElement.classList.remove("animate-zoom");
+
+  // Bildreferenz ändern
+  actionImgElement.src = `assets/actionIcons/${fullImageName}.png`;
+
+  // Nächsten Frame abwarten
+  requestAnimationFrame(() => {
+    actionImgElement.classList.add("animate-zoom");
+  });
 }
 
 function renderHistory() {

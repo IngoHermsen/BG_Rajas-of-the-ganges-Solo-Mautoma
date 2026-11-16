@@ -3,6 +3,7 @@ html {
 }
 
 body {
+    background-image: url("assets/bg.webp");
     position: relative;
     font-family: 'Source Sans Pro', 'Source Sans 3', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     /* font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif; */
@@ -24,6 +25,7 @@ h3 {
     font-size: 28px;
     margin: unset;
     margin-top: 8px;
+    text-align: center;
 }
 
 button {
@@ -48,13 +50,13 @@ button {
 }
 
 .title {
-  color: #db6c0a;
-  text-shadow:
-    0 0 4px rgba(255, 255, 255, 0.5),
-    0 0 12px rgba(100, 180, 255, 0.35),
-    0 3px 5px rgba(0, 0, 0, 0.4),
-    -1px -1px 1px rgba(255, 255, 255, 0.35),
-    1px 1px 1px rgba(0, 0, 0, 0.35);
+    color: #db6c0a;
+    text-shadow:
+        0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 12px rgba(100, 180, 255, 0.35),
+        0 3px 5px rgba(255, 255, 255, 0.4),
+        -1px -1px 1px rgba(255, 255, 255, 0.35),
+        1px 1px 1px rgba(255, 255, 255, 0.35);
 }
 
 .start-screen {
@@ -73,6 +75,7 @@ button {
 }
 
 .difficulty-selection {
+    border-radius: 25px;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -95,11 +98,11 @@ button {
 }
 
 .difficulty-selection .option:hover::before {
-        content: "\2713 "
+    content: "\2713 "
 }
 
 .difficulty-selection .selected::before {
-        content: "\2713 "
+    content: "\2713 "
 }
 
 .img-container {
@@ -111,8 +114,29 @@ button {
     height: 230px;
 }
 
+.active-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .action-img {
+    transform: scale(0);
     max-width: 150px;
+}
+
+.animate-zoom {
+    animation: zoomIn 500ms ease-out forwards;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
 
 .card {
@@ -121,8 +145,9 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.6);
     background-size: contain;
+    border-radius: 20px;
     max-width: 420px;
     width: 100%;
     height: 100%;
@@ -148,20 +173,11 @@ button {
     display: none;
     position: absolute;
     inset: 0px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
     z-index: 4;
-    overflow-y: scroll;
-}
-
-.history-overlay .close {
-    cursor: pointer;
-    display: block;
-    width: 95%;
-    padding-right: 48px;
-    text-align: end;
-    font-size: 20px;
-    font-weight: 600;
-    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
 }
 
 .history-list {
@@ -173,19 +189,19 @@ button {
 }
 
 .history-list .entry {
-     padding-left: 12px;
-     padding-right: 12px;
-     display: flex;
-     gap: 28px;
-     align-items: center;
-     height: 100px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    height: 100px;
 }
 
 .history-list .entry.evenEntry {
     background-color: rgb(252, 222, 174)
 }
 
-.history-list > .entry > img {
+.history-list>.entry>img {
     width: 150px;
     max-height: 80%;
     object-fit: contain;
@@ -217,14 +233,14 @@ button {
     display: flex;
     font-weight: bold;
     font-size: 24px;
-    gap: 24px;    
+    gap: 24px;
 }
 
 .history-toggle {
-    z-index: 2;
-    display: block;
+    z-index: 5;
+    display: none;
     cursor: pointer;
-    width: 40px;
+    width: 60px;
     position: absolute;
     right: 16px;
     top: 12px

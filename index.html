@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Rajas Of the Ganges - Mautoma</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <div>
-            <h1 class="title">Rajas Of The Ganges</h1>
-        </div>
-        <!-- <div class="wrapper"> -->
-        <div class="card" id="main">
-            <div class="difficulty-selection start">
-                <h3>Select Level</h3>
-                <span onclick="setDifficulty('easy')" class="option easy" id="easy">easy</span>
-                <span onclick="setDifficulty('medium')" class="option medium" id="medium">medium</span>
-                <span onclick="setDifficulty('hard')" class="option hard" id="hard">hard</span>
-                <button onclick="start()" disabled id="startBtn">Draw first Action</button>
-                       <div class="footer">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajas Of the Ganges - Mautoma</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div>
+        <h1 class="title start">Rajas Of The Ganges</h1>
+    </div>
+    <!-- <div class="wrapper"> -->
+    <div class="card" id="main">
+        <div class="difficulty-selection start">
+            <h3>Select Level</h3>
+            <span onclick="setDifficulty('easy')" class="option easy" id="easy">easy</span>
+            <span onclick="setDifficulty('medium')" class="option medium" id="medium">medium</span>
+            <span onclick="setDifficulty('hard')" class="option hard" id="hard">hard</span>
+            <button onclick="start()" disabled id="startBtn">Draw first Action</button>
+            <div class="footer">
                 <span>App version of the Solo Automa created by Mauro from
                     <a href="https://mautoma.com" target="_blank">mautoma.com</a>
                 </span>
                 <span>For rules and gameplay visit the game page on
-                <a href="https://mautoma.com/rajas-of-the-ganges" target="_blank">mautoma.com</a>
+                    <a href="https://mautoma.com/rajas-of-the-ganges" target="_blank">mautoma.com</a>
 
                 </span>
             </div>
-            </div>
-            <!-- controls - 'previous' not visible in default view, only for history -->
-            <img
-                onclick="toggleHistory()"
-                src="assets/history-clock.png"
-                alt="history-clock-png"
-                class="history-toggle open"
-                id="history-clock-img"
-            >
+        </div>
+        <!-- controls - 'previous' not visible in default view, only for history -->
+        <img onclick="toggleHistory()" src="assets/history-clock.png" alt="history-clock-png"
+            class="history-toggle" id="history-clock-img">
+        <div class="active-action" id="activeAction">
             <h3 class="action-title" id="actionTitle"></h3>
             <div class="img-container">
-            <img class="action-img" src="" alt="actionImage" id="actionImage">
+                <img class="action-img animate-zoom" src="" alt="actionImage" id="actionImage">
             </div>
             <section class="rewards-section">
                 <div class="fame rewards">
@@ -52,14 +50,16 @@
                 </div>
             </section>
             <button class="next-button" onclick="nextAction()">NEXT</button>
-            <!-- History Overlay -->
-            <div class="history-overlay" id="history-overlay">
-                <span onclick="toggleHistory()" class="close" id="close">back &#8594;</span>
-                <div class="history-list" id="history-list">
-                    
-                    <!-- dynamically rendered history entries -->
-                    </div>
+        </div>
+
+        <!-- History Overlay -->
+        <div class="history-overlay" id="history-overlay">
+            <div class="history-list" id="history-list">
+
+                <!-- dynamically rendered history entries -->
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
